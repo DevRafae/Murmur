@@ -17,46 +17,61 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Elementos da tela de senha e do chat
+// Elementos da tela
+const userSelectionScreen = document.getElementById('user-selection-screen');
 const passwordScreen = document.getElementById('password-screen');
 const chatContainer = document.getElementById('chat-container');
 const passwordInput = document.getElementById('password-input');
 const passwordBtn = document.getElementById('password-btn');
 const errorMessage = document.getElementById('error-message');
 
-// Função para verificar a senha ao clicar no botão "Entrar"
-passwordBtn.addEventListener('click', () => {
-    const enteredPassword = passwordInput.value.trim();
-    console.log('Senha inserida:', enteredPassword); // Log da senha inserida
-    if (enteredPassword === '123') { // Altere para sua senha
-        unlockChat();
-    } else {
-        errorMessage.textContent = 'Senha incorreta. Tente novamente.';
-        passwordInput.value = '';
-        console.log('Senha incorreta'); // Log para senha incorreta
-    }
-});
-
-// Função que desbloqueia o chat e esconde a tela de senha
-function unlockChat() {
-    console.log('Chat desbloqueado'); // Log para verificar se a função é chamada
-    passwordScreen.style.display = 'none';
-    chatContainer.classList.remove('hidden');
-
-    // Carregar mensagens do Firebase
-    loadMessages();
-}
-
 // Elementos do chat
 const chatBox = document.getElementById('chat-box');
 const messageInput = document.getElementById('message-input');
 const sendBtn = document.getElementById('send-btn');
 
-// Função para enviar a mensagem
+// Variável para armazenar o usuário escolhido
+let currentUser = '';
+
+// Função para escolher o usuário
+document.getElementById('ph-btn').addEventListener('click', () => {
+    currentUser = 'PH';
+    showPasswordScreen();
+});
+document.getElementById('rafa-btn').addEventListener('click', () => {
+    currentUser = 'Rafa';
+    showPasswordScreen();
+});
+
+// Mostra a tela de senha
+function showPasswordScreen() {
+    userSelectionScreen.style.display = 'none';
+    passwordScreen.style.display = 'flex'; // Exibe a tela de senha
+}
+
+// Verificar a senha ao clicar no botão "Entrar"
+passwordBtn.addEventListener('click', () => {
+    const enteredPassword = passwordInput.value.trim();
+    if (enteredPassword === '123') { // Altere para sua senha
+        unlockChat();
+    } else {
+        errorMessage.textContent = 'Senha incorreta. Tente novamente.';
+        passwordInput.value = '';
+    }
+});
+
+// Função que desbloqueia o chat e esconde a tela de senha
+function unlockChat() {
+    passwordScreen.style.display = 'none';
+    chatContainer.style.display = 'flex'; // Exibe a tela de chat
+    loadMessages();
+}
+
+// Função para enviar a mensagem com o nome do usuário
 function sendMessage() {
     const message = messageInput.value.trim();
     if (message !== '') {
-        const messageObj = { text: message, sender: 'self' };
+        const messageObj = { text: `${currentUser}: ${message}`, sender: currentUser };
         push(ref(db, 'messages'), messageObj); // Enviar mensagem para o Firebase
         messageInput.value = ''; // Limpa o campo de entrada
     }
@@ -86,7 +101,6 @@ function loadMessages() {
     const messagesRef = ref(db, 'messages');
     onChildAdded(messagesRef, (data) => {
         const message = data.val();
-        console.log('Mensagem carregada:', message); // Log para verificar mensagens carregadas
         addMessageToChat(message);
     });
 }
