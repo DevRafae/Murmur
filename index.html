@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Murmur</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="password-screen">
+    <!-- Tela de seleção de usuário -->
+    <div id="user-selection-screen">
+        <h2>Escolha seu Usuário</h2>
+        <button id="ph-btn">Entrar como PH</button>
+        <button id="rafa-btn">Entrar como Rafa</button>
+    </div>
+
+    <!-- Tela de senha -->
+    <div id="password-screen" class="hidden">
         <h2>Entre com a Senha</h2>
         <input type="password" id="password-input" placeholder="Digite sua senha">
         <button id="password-btn">Entrar</button>
         <p id="error-message" class="error"></p>
     </div>
 
+    <!-- Tela de chat -->
     <div id="chat-container" class="hidden">
         <div id="chat-box"></div>
         <input type="text" id="message-input" placeholder="Digite uma mensagem...">
