@@ -4,15 +4,14 @@ import { getDatabase, ref, onChildAdded, push } from "https://www.gstatic.com/fi
 
 // Configuração do Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDFhgQe2FpCg96kKlbOVF42M2uGq9hxBOs", // Chave da API
-    authDomain: "murmur-716ee.firebaseapp.com", // Auth Domain
-    databaseURL: "https://murmur-716ee-default-rtdb.europe-west1.firebasedatabase.app/", // URL do banco de dados
-    projectId: "murmur-716ee", // ID do projeto
-    storageBucket: "murmur-716ee.appspot.com", // Bucket de armazenamento
-    messagingSenderId: "486719637452", // ID do remetente de mensagens
-    appId: "1:486719637452:web:7ad9c90834969ced90ff69" // App ID
+    apiKey: "AIzaSyDFhgQe2FpCg96kKlbOVF42M2uGq9hxBOs",
+    authDomain: "murmur-716ee.firebaseapp.com",
+    databaseURL: "https://murmur-716ee-default-rtdb.europe-west1.firebasedatabase.app/",
+    projectId: "murmur-716ee",
+    storageBucket: "murmur-716ee.appspot.com",
+    messagingSenderId: "486719637452",
+    appId: "1:486719637452:web:7ad9c90834969ced90ff69"
 };
-
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
@@ -28,16 +27,19 @@ const errorMessage = document.getElementById('error-message');
 // Função para verificar a senha ao clicar no botão "Entrar"
 passwordBtn.addEventListener('click', () => {
     const enteredPassword = passwordInput.value.trim();
+    console.log('Senha inserida:', enteredPassword); // Log da senha inserida
     if (enteredPassword === '123') { // Altere para sua senha
         unlockChat();
     } else {
         errorMessage.textContent = 'Senha incorreta. Tente novamente.';
         passwordInput.value = '';
+        console.log('Senha incorreta'); // Log para senha incorreta
     }
 });
 
 // Função que desbloqueia o chat e esconde a tela de senha
 function unlockChat() {
+    console.log('Chat desbloqueado'); // Log para verificar se a função é chamada
     passwordScreen.style.display = 'none';
     chatContainer.classList.remove('hidden');
 
@@ -84,6 +86,7 @@ function loadMessages() {
     const messagesRef = ref(db, 'messages');
     onChildAdded(messagesRef, (data) => {
         const message = data.val();
+        console.log('Mensagem carregada:', message); // Log para verificar mensagens carregadas
         addMessageToChat(message);
     });
 }
