@@ -13,19 +13,18 @@ passwordBtn.addEventListener('click', () => {
   const enteredPassword = passwordInput.value.trim();
   
   if (enteredPassword === correctPassword) {
-    // Se a senha estiver correta, desbloqueia o chat
     unlockChat();
   } else {
-    // Exibe mensagem de erro se a senha estiver incorreta
     errorMessage.textContent = 'Senha incorreta. Tente novamente.';
-    passwordInput.value = ''; // Limpa o campo de senha
+    passwordInput.value = '';
   }
 });
 
 // Função que desbloqueia o chat e esconde a tela de senha
 function unlockChat() {
-  passwordScreen.style.display = 'none'; // Esconde a tela de senha
-  chatContainer.classList.remove('hidden'); // Mostra o chat
+  passwordScreen.style.display = 'none';
+  chatContainer.classList.remove('hidden');
+  loadMessages(); // Carregar mensagens ao desbloquear o chat
 }
 
 // Chat funcionalidade
@@ -39,11 +38,6 @@ function sendMessage() {
   if (message !== '') {
     addMessageToChat(message, 'self');
     storeMessage(message, 'self');
-    setTimeout(() => {
-      const responseMessage = `Resposta de outro usuário para: "${message}"`;
-      addMessageToChat(responseMessage, 'other');
-      storeMessage(responseMessage, 'other');
-    }, 1000);
     messageInput.value = ''; // Limpa o campo de entrada após enviar
   }
 }
@@ -65,6 +59,8 @@ function addMessageToChat(message, sender) {
   messageElement.classList.add('message');
   if (sender === 'self') {
     messageElement.classList.add('self');
+  } else {
+    messageElement.classList.add('other');
   }
   messageElement.textContent = message;
   chatBox.appendChild(messageElement);
@@ -90,6 +86,3 @@ function loadMessages() {
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('chatHistory');
 });
-
-// Carregar o histórico de mensagens ao carregar a página
-loadMessages();
