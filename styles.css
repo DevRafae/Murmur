@@ -1,104 +1,30 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #e5ddd5; /* Cor de fundo leve */
+    background-color: #f0f0f0;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 20px;
 }
 
 #password-screen, #chat-container {
-    background-color: #fff; /* Fundo branco para contraste */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
     padding: 20px;
-    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#chat-container {
-    display: none; /* Oculto inicialmente */
-}
-
-h2 {
-    text-align: center;
-}
-
-input[type="password"], input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s;
-}
-
-input[type="password"]:focus, input[type="text"]:focus {
-    border-color: #0084ff; /* Cor de foco azul */
-}
-
-button {
-    background-color: #0084ff; /* Cor do botão */
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #005bb5; /* Cor do botão ao passar o mouse */
+.hidden {
+    display: none; /* Esta classe esconde elementos */
 }
 
 #error-message {
     color: red;
-    text-align: center;
 }
 
 #chat-box {
-    max-height: 300px;
+    height: 300px;
     overflow-y: auto;
+    border: 1px solid #ccc;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #f1f1f1; /* Fundo das mensagens */
-    border-radius: 5px;
-}
-
-/* Estilo para mensagens */
-.message {
-    max-width: 80%;
-    padding: 8px 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    position: relative;
-    word-wrap: break-word;
-}
-
-/* Mensagem enviada pelo usuário */
-.message.self {
-    background-color: #dcf8c6; /* Cor das mensagens enviadas */
-    margin-left: auto; /* Alinha à direita */
-}
-
-/* Mensagem recebida */
-.message.other {
-    background-color: #fff; /* Cor das mensagens recebidas */
-    margin-right: auto; /* Alinha à esquerda */
-}
-
-/* Efeito de privacidade para bisbilhoteiros */
-#chat-container {
-    backdrop-filter: blur(5px); /* Efeito de desfoque ao fundo */
-}
-
-@media (max-width: 400px) {
-    #chat-container, #password-screen {
-        width: 90%; /* Responsividade */
-    }
+    border-radius: 4px;
 }
