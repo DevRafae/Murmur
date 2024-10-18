@@ -34,12 +34,12 @@ const sendBtn = document.getElementById('send-btn');
 let currentUser = '';
 
 // Função para escolher o usuário
-document.getElementById('ph-btn').addEventListener('click', () => {
-    currentUser = 'PH';
+document.getElementById('JB-btn').addEventListener('click', () => {
+    currentUser = 'JB';
     showPasswordScreen();
 });
-document.getElementById('rafa-btn').addEventListener('click', () => {
-    currentUser = 'Rafa';
+document.getElementById('Sable-btn').addEventListener('click', () => {
+    currentUser = 'Sable';
     showPasswordScreen();
 });
 
