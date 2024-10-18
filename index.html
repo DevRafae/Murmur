@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Tela de senha -->
+  <div id="password-screen" class="password-screen">
+    <div class="password-container">
+      <h2>Insira a senha para acessar o chat</h2>
+      <input type="password" id="password-input" placeholder="Senha">
+      <button id="password-btn">Entrar</button>
+      <p id="error-message" class="error-message"></p>
+    </div>
+  </div>
+
+  <!-- Chat, visível apenas após a senha -->
+  <div id="chat-container" class="chat-container hidden">
+    <div class="chat-box" id="chat-box">
+      <!-- Mensagens irão aparecer aqui -->
+    </div>
+    <div class="input-container">
+      <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+      <button id="send-btn">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
