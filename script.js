@@ -4,14 +4,15 @@ import { getDatabase, ref, onChildAdded, push } from "https://www.gstatic.com/fi
 
 // Configuração do Firebase
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://murmur-716ee-default-rtdb.europe-west1.firebasedatabase.app/", // Adicione sua URL aqui
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDFhgQe2FpCg96kKlbOVF42M2uGq9hxBOs", // Chave da API
+    authDomain: "murmur-716ee.firebaseapp.com", // Auth Domain
+    databaseURL: "https://murmur-716ee-default-rtdb.europe-west1.firebasedatabase.app/", // URL do banco de dados
+    projectId: "murmur-716ee", // ID do projeto
+    storageBucket: "murmur-716ee.appspot.com", // Bucket de armazenamento
+    messagingSenderId: "486719637452", // ID do remetente de mensagens
+    appId: "1:486719637452:web:7ad9c90834969ced90ff69" // App ID
 };
+
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
