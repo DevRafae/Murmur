@@ -3,22 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Secreto</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chat em Tempo Real</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        #chat {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        #messages li {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background: #e3e3e3;
+        }
+        #messages li.self {
+            background: #dcf8c6;
+            text-align: right;
+        }
+        form {
+            display: flex;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div id="password-screen">
-        <input type="password" id="password-input" placeholder="Digite a senha">
-        <button id="password-btn">Entrar</button>
-        <div id="error-message"></div>
+    <div id="chat">
+        <ul id="messages"></ul>
+        <form id="form" onsubmit="return sendMessage();">
+            <input id="message-input" autocomplete="off" placeholder="Digite sua mensagem" />
+            <button>Enviar</button>
+        </form>
     </div>
 
-    <div id="chat-container" class="hidden">
-        <div id="chat-box"></div>
-        <input type="text" id="message-input" placeholder="Digite sua mensagem...">
-        <button id="send-btn">Enviar</button>
-    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
 
-    <script src="script.js"></script>
-</body>
-</html>
+        function sendMessage() {
+            const message = document.getElementById('message-input').value;
+            if (message) {
+                socket.emit('chat message', message); // Envia a mensagem para o servidor
+                document.getElementById('message-input').value = '';
+            }
+            return false; // Impede o envio do formulário
+        }
+
+        socket.on('chat message', function(msg) {
+            const item = document.createElement('li');
+            item.textContent = msg;
+            item.classList.add(
