@@ -101,13 +101,10 @@ input[type="password"] {
 }
 
 /* Estilo da hora da mensagem */
-.message::after {
-    content: attr(data-time); /* Exibe a hora da mensagem */
-    position: absolute;
-    right: 10px;
-    bottom: -18px;
-    font-size: 12px;
-    color: #aaa;
+.message-time {
+    font-size: 12px; /* Tamanho da fonte para o horário */
+    color: #aaa; /* Cor do texto do horário */
+    margin-top: 5px; /* Espaçamento entre a mensagem e o horário */
 }
 
 /* Estilos para a entrada de mensagem */
