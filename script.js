@@ -67,11 +67,12 @@ function unlockChat() {
     loadMessages();
 }
 
-// Função para enviar a mensagem com o nome do usuário
+// Função para enviar a mensagem com o nome do usuário e horário
 function sendMessage() {
     const message = messageInput.value.trim();
     if (message !== '') {
-        const messageObj = { text: `${currentUser}: ${message}`, sender: currentUser };
+        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Obtém o horário atual
+        const messageObj = { text: `${currentUser}: ${message}`, sender: currentUser, time: timestamp }; // Adiciona o timestamp
         push(ref(db, 'messages'), messageObj); // Enviar mensagem para o Firebase
         messageInput.value = ''; // Limpa o campo de entrada
     }
@@ -92,11 +93,18 @@ function addMessageToChat(message) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
     messageElement.textContent = message.text;
+
+    // Adiciona o horário da mensagem abaixo do texto
+    const timeElement = document.createElement('div');
+    timeElement.classList.add('message-time'); // Classe para estilização
+    timeElement.textContent = message.time; // Define o horário da mensagem
+    messageElement.appendChild(timeElement); // Adiciona o horário ao elemento da mensagem
+
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight; // Rolagem automática para a última mensagem
 }
 
-// Carregar mensagens do Firebase
+// Função para carregar mensagens do Firebase
 function loadMessages() {
     const messagesRef = ref(db, 'messages');
     onChildAdded(messagesRef, (data) => {
