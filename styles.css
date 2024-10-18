@@ -1,95 +1,137 @@
-/* styles.css */
-
+/* Define o estilo geral da página */
 body {
-    font-family: 'Courier New', Courier, monospace; /* Fonte estilo tech */
-    background-color: #121212; /* Fundo preto */
-    color: #e0e0e0; /* Texto claro para contraste */
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-#password-screen, #chat-container {
-    background-color: #1f1f1f; /* Fundo cinza escuro para os contêineres */
-    border: 1px solid #333; /* Borda sutil */
-    border-radius: 10px;
-    padding: 20px;
-    width: 350px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Sombra para destacar */
-}
-
-h2 {
-    text-align: center;
-    color: #00ff7f; /* Verde neon para um visual tech */
-}
-
-input[type="password"], input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: #333; /* Fundo dos inputs */
-    color: #fff; /* Texto branco */
-    outline: none;
-}
-
-input[type="password"]:focus, input[type="text"]:focus {
-    border: 1px solid #00ff7f; /* Destaque de foco com verde neon */
+/* Tela de seleção de usuário */
+#user-selection-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
-    background-color: #00ff7f; /* Botão verde neon */
-    color: black;
-    padding: 12px;
-    border: none;
+    background-color: #1c1c1c;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #00cc66; /* Efeito hover mais escuro */
+    background-color: #333;
+    border-color: #888;
 }
 
-#error-message {
-    color: red;
+/* Tela de senha */
+#password-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-#chat-box {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 10px;
+#error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+input[type="password"] {
     padding: 10px;
-    background-color: #1a1a1a; /* Fundo do chat */
+    margin-top: 15px;
+    border: 1px solid #444;
     border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #fff;
 }
 
-/* Estilo das mensagens */
-.message {
-    padding: 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    max-width: 80%;
-    word-wrap: break-word;
-    color: #e0e0e0;
+#password-btn {
+    margin-top: 10px;
 }
 
-.message.self {
-    background-color: #00ff7f;
-    color: #121212;
-    margin-left: auto;
-}
-
-.message.other {
-    background-color: #333;
-    margin-right: auto;
-}
-
+/* Oculta elementos quando necessário */
 .hidden {
     display: none;
+}
+
+/* Estilos gerais para o chat */
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 600px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+#chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #444;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilos das mensagens */
+.message {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #333;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+}
+
+/* Estilo da hora da mensagem */
+.message::after {
+    content: attr(data-time); /* Exibe a hora da mensagem */
+    position: absolute;
+    right: 10px;
+    bottom: -18px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Estilos para a entrada de mensagem */
+#message-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+#send-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#send-btn:hover {
+    background-color: #555;
 }
