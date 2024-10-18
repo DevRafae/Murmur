@@ -1,8 +1,9 @@
 /* styles.css */
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000000; /* Cor de fundo leve */
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo tech */
+    background-color: #121212; /* Fundo preto */
+    color: #e0e0e0; /* Texto claro para contraste */
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,48 +13,46 @@ body {
 }
 
 #password-screen, #chat-container {
-    background-color: #fff; /* Fundo branco para contraste */
+    background-color: #1f1f1f; /* Fundo cinza escuro para os contêineres */
+    border: 1px solid #333; /* Borda sutil */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 300px;
-}
-
-#chat-container {
-    display: none; /* Oculto inicialmente */
+    width: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Sombra para destacar */
 }
 
 h2 {
     text-align: center;
+    color: #00ff7f; /* Verde neon para um visual tech */
 }
 
 input[type="password"], input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
+    background-color: #333; /* Fundo dos inputs */
+    color: #fff; /* Texto branco */
     outline: none;
-    transition: border 0.3s;
 }
 
 input[type="password"]:focus, input[type="text"]:focus {
-    border-color: #0084ff; /* Cor de foco azul */
+    border: 1px solid #00ff7f; /* Destaque de foco com verde neon */
 }
 
 button {
-    background-color: #0084ff; /* Cor do botão */
-    color: white;
-    padding: 10px;
+    background-color: #00ff7f; /* Botão verde neon */
+    color: black;
+    padding: 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #005bb5; /* Cor do botão ao passar o mouse */
+    background-color: #00cc66; /* Efeito hover mais escuro */
 }
 
 #error-message {
@@ -66,40 +65,31 @@ button:hover {
     overflow-y: auto;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #0a0a0a; /* Fundo das mensagens */
+    background-color: #1a1a1a; /* Fundo do chat */
     border-radius: 5px;
-    color: #ccc;
 }
 
-/* Estilo para mensagens */
+/* Estilo das mensagens */
 .message {
-    max-width: 80%;
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 10px;
     margin: 5px 0;
-    position: relative;
+    max-width: 80%;
     word-wrap: break-word;
+    color: #e0e0e0;
 }
 
-/* Mensagem enviada pelo usuário */
 .message.self {
-    background-color: #dcf8c6; /* Cor das mensagens enviadas */
-    margin-left: auto; /* Alinha à direita */
+    background-color: #00ff7f;
+    color: #121212;
+    margin-left: auto;
 }
 
-/* Mensagem recebida */
 .message.other {
-    background-color: #fff; /* Cor das mensagens recebidas */
-    margin-right: auto; /* Alinha à esquerda */
+    background-color: #333;
+    margin-right: auto;
 }
 
-/* Efeito de privacidade para bisbilhoteiros */
-#chat-container {
-    backdrop-filter: blur(5px); /* Efeito de desfoque ao fundo */
-}
-
-@media (max-width: 400px) {
-    #chat-container, #password-screen {
-        width: 90%; /* Responsividade */
-    }
+.hidden {
+    display: none;
 }
