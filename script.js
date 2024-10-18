@@ -4,13 +4,13 @@ import { getDatabase, ref, onChildAdded, push } from "https://www.gstatic.com/fi
 
 // Configuração do Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDFhgQe2FpCg96kKlbOVF42M2uGq9hxBOs",
-    authDomain: "murmur-716ee.firebaseapp.com",
-    projectId: "murmur-716ee",
-    storageBucket: "murmur-716ee.appspot.com",
-    messagingSenderId: "486719637452",
-    appId: "1:486719637452:web:7ad9c90834969ced90ff69",
-    measurementId: "G-TPZ9VW6G1Z"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://murmur-716ee-default-rtdb.europe-west1.firebasedatabase.app/", // Adicione sua URL aqui
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
 // Inicializa o Firebase
